@@ -1,0 +1,370 @@
+# sector-zero-voidline
+​🌌 Sector Zero · Voidline Studios 🎮 | FPS táctico y de supervivencia con el Modo Guerra disponible y soporte para M1216 y RAY GUN. Próximamente modo Multiplayer. ⚡🔥
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Sector Zero · Voidline Studios</title>
+<style>
+  :root {
+    --bg-primary: #05080b;
+    --bg-card: rgba(13, 25, 33, 0.75);
+    --accent: #19e3ff;
+    --accent-glow: rgba(25, 227, 255, 0.4);
+    --text-main: #e0fbfc;
+    --text-muted: #8aa2a8;
+    --danger: #ff3860;
+    --warning: #ffdd57;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    background-image: radial-gradient(circle at 50% 10%, #0d2833 0%, #05080b 70%);
+    color: var(--text-main);
+    font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* --- HEADER & HERO --- */
+  header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 4vh 5vw;
+    position: relative;
+    border-bottom: 2px solid var(--accent);
+    background: linear-gradient(rgba(5,8,11,0.6), rgba(5,8,11,0.9)), url('SectorZero.jpg') center/cover no-repeat;
+  }
+
+  .nav-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+  }
+
+  .studio-tag {
+    font-size: 2.2vh;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px var(--accent-glow);
+  }
+
+  .hero-content {
+    max-width: 900px;
+    margin: auto;
+    padding: 4vh 0;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    letter-spacing: 0.25em;
+    color: #fff;
+    text-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent-glow);
+    margin-bottom: 2vh;
+    font-weight: 900;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    margin-bottom: 4vh;
+    text-transform: uppercase;
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 2vw;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1.6vh 3.5vw;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(25, 227, 255, 0.2);
+  }
+
+  .btn:hover {
+    background: var(--accent);
+    color: #000;
+    box-shadow: 0 0 30px var(--accent), 0 0 60px var(--accent-glow);
+    transform: translateY(-3px);
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+  }
+
+  /* --- MAIN CONTAINER --- */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 8vh 5vw;
+  }
+
+  section {
+    margin-bottom: 10vh;
+    background: var(--bg-card);
+    border: 1px solid rgba(25, 227, 255, 0.2);
+    border-radius: 20px;
+    padding: 5vh 4vw;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    margin-bottom: 3vh;
+    text-transform: uppercase;
+    border-left: 5px solid var(--accent);
+    padding-left: 20px;
+    text-shadow: 0 0 10px var(--accent-glow);
+  }
+
+  p {
+    font-size: 1.15rem;
+    color: var(--text-main);
+    margin-bottom: 2.5vh;
+    line-height: 1.8;
+  }
+
+  /* --- GALLERY & CARDS --- */
+  .grid-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3vw;
+    margin-top: 4vh;
+  }
+
+  .card-media {
+    background: #090e13;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .card-media:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+
+  .card-media img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.85);
+    transition: filter 0.3s;
+  }
+
+  .card-media:hover img {
+    filter: brightness(1);
+  }
+
+  .card-body {
+    padding: 2.5vh 2vw;
+  }
+
+  .card-body h3 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 1vh;
+    letter-spacing: 0.08em;
+  }
+
+  /* --- WEAPONS & FEATURES LIST --- */
+  .features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5vw;
+    margin-top: 4vh;
+  }
+
+  .feature-box {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(25, 227, 255, 0.3);
+    border-radius: 14px;
+    padding: 3vh 2.5vw;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 4px; height: 100%;
+    background: var(--accent);
+  }
+
+  .feature-box h3 {
+    color: var(--accent);
+    font-size: 1.3rem;
+    margin-bottom: 1.5vh;
+    letter-spacing: 0.1em;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.4vh 1.2vw;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5vh;
+  }
+
+  .badge-live { background: rgba(25, 227, 255, 0.2); color: var(--accent); border: 1px solid var(--accent); }
+  .badge-soon { background: rgba(255, 56, 96, 0.2); color: var(--danger); border: 1px solid var(--danger); }
+  .badge-weapon { background: rgba(255, 221, 87, 0.2); color: var(--warning); border: 1px solid var(--warning); }
+
+  /* --- FOOTER --- */
+  footer {
+    text-align: center;
+    padding: 6vh 5vw;
+    background: #020406;
+    border-top: 1px solid rgba(25, 227, 255, 0.2);
+    color: var(--text-muted);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  footer span {
+    color: var(--accent);
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-bar">
+      <div class="studio-tag">VOIDLINE STUDIOS</div>
+      <div class="studio-tag">OFFICIAL PORTAL</div>
+    </div>
+    
+    <div class="hero-content">
+      <h1>SECTOR ZERO</h1>
+      <p class="hero-subtitle">La experiencia definitiva de combate táctico y supervivencia extrema</p>
+      <div class="btn-group">
+        <a href="#about" class="btn btn-primary">EXPLORAR JUEGO</a>
+        <a href="#arsenal" class="btn">VER ARSENAL</a>
+      </div>
+    </div>
+    
+    <div style="height: 2vh;"></div>
+  </header>
+
+  <main>
+    <!-- SECCIÓN: ACERCA DEL JUEGO -->
+    <section id="about">
+      <h2>SOBRE EL JUEGO Y UNIVERSO</h2>
+      <p>
+        Sumérgete en el universo despiadado de <strong>Sector Zero</strong>, un título de acción táctica en primera persona desarrollado con tecnología de vanguardia por <strong>Voidline Studios</strong>. En este entorno hiperrealista y absorbente, la supervivencia no depende únicamente de tus reflejos, sino de tu capacidad estratégica para adaptarte a oleadas incesantes de hostilidad sintética y tácticas de combate extremas en escenarios dinámicos.
+      </p>
+      <p>
+        Cada pasillo, cada estructura y cada rincón de Sector Zero ha sido minuciosamente diseñado para ofrecer una atmósfera densa, oscura y futurista. La tensión se incrementa ronda tras ronda a medida que la dificultad escala, obligándote a gestionar cada bala, cada recarga y cada posición defensiva con absoluta precisión. Prepárate para una jugabilidad fluida optimizada tanto para PC como para dispositivos móviles, garantizando rendimiento impecable y gráficos impactantes.
+      </p>
+
+      <div class="grid-gallery">
+        <div class="card-media">
+          <img src="portada.jpg" alt="Portada Oficial Sector Zero" onerror="this.src='SectorZero.jpg'">
+          <div class="card-body">
+            <h3>Inmersión Visual Total</h3>
+            <p style="font-size:0.95rem; color:var(--text-muted);">Diseño artístico impecable con iluminación dinámica y estética de ciencia ficción avanzada.</p>
+          </div>
+        </div>
+        <div class="card-media">
+          <img src="gameplay1.jpg" alt="Gameplay Sector Zero" onerror="this.src='SectorZero.jpg'">
+          <div class="card-body">
+            <h3>Acción Sin Respiro</h3>
+            <p style="font-size:0.95rem; color:var(--text-muted);">Enfrentamientos dinámicos contra amenazas implacables en mapas tácticos complejos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: MODOS DE JUEGO -->
+    <section id="modes">
+      <h2>MODOS DE JUEGO</h2>
+      <p>
+        Sector Zero ha sido concebido para ofrecer una rejugabilidad infinita a través de modalidades diseñadas para poner a prueba las habilidades más exigentes de la comunidad táctica global:
+      </p>
+
+      <div class="features-list">
+        <div class="feature-box">
+          <span class="badge badge-live">DISPONIBLE AHORA</span>
+          <h3>MODO GUERRA</h3>
+          <p>El núcleo de la experiencia táctica. Enfrentate a oleadas dinámicas de enemigos de alta resistencia en un mapa cerrado de máxima tensión. Sobrevive, acumula bajas, interactúa con cajas de suministros especiales y demuestra tu valía en combate cerrado.</p>
+        </div>
+
+        <div class="feature-box">
+          <span class="badge badge-soon">PRÓXIMAMENTE</span>
+          <h3>MODO MULTIPLAYER</h3>
+          <p>Lleva la rivalidad al siguiente nivel. Muy pronto podrás unirte con jugadores de todo el mundo, coordinar estrategias en equipo, competir en marcadores globales en tiempo real y experimentar batallas multijugador masivas con la máxima fluidez.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN: ARSENAL -->
+    <section id="arsenal">
+      <h2>ARSENAL TÁCTICO: M1216 & RAY GUN</h2>
+      <p>
+        El poder de fuego en <strong>Sector Zero</strong> es la línea definitiva entre la gloria y la aniquilación. Nuestro equipo de ingeniería armamentística en Voidline Studios ha integrado herramientas de destrucción diseñadas para dominar cualquier campo de batalla:
+      </p>
+
+      <div class="features-list">
+        <div class="feature-box">
+          <span class="badge badge-weapon">ESCOMETA TÁCTICA</span>
+          <h3>M1216</h3>
+          <p>Una escopeta semiautomática de alta cadencia y tambor rotativo de cuatro tubos. Diseñada para diezmar líneas enemigas a corta distancia con un daño devastador por perdigón, ideal para despejar pasillos y mantener el control de zonas críticas en el Modo Guerra.</p>
+        </div>
+
+        <div class="feature-box">
+          <span class="badge badge-weapon">ARMA ANOMALÍA</span>
+          <h3>RAY GUN</h3>
+          <p>La máxima expresión tecnológica en el campo de batalla. Dispara proyectiles de energía concentrada capaces de desintegrar múltiples objetivos con impactos de plasma puro. Su adquisición es clave para superar las rondas más avanzadas y desafiantes del juego.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 <span>Voidline Studios</span>. Todos los derechos reservados. Desarrollado por VoidlineStudio / Voidline.</p>
+    <p style="font-size: 0.85rem; margin-top: 1vh; color: var(--text-muted);">Optimizado para GitHub Pages con carga directa de recursos multimedia en raíz.</p>
+  </footer>
+
+</body>
+</html>
