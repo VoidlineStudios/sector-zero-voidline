@@ -1,5 +1,5 @@
-# sector-zero-voidline
-​​🌌 Sector Zero · Voidline Studios 🎮 | FPS táctico y de supervivencia con el Modo Guerra disponible y soporte para M1216 y RAY GUN. Próximamente modo Multiplayer. ⚡🔥
+#sector-zero-voidline
+​🌌 Sector Zero · Voidline Studios 🎮 | FPS táctico y de supervivencia con el Modo Guerra disponible y soporte para M1216 y RAY GUN. Próximamente modo Multiplayer. ⚡🔥
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -417,7 +417,7 @@
     }
   });
 
-  // --- CONTENIDO HTML DEL JUEGO DIRECTO (SIN OFUSCAR) QUE BUSCA EN LA RAÍZ DE GITHUB ---
+  // --- CÓDIGO HTML DEL JUEGO DIRECTO (SIN OFUSCAR) QUE BUSCA EN LA RAÍZ DE GITHUB ---
   const _gameHtmlCode = `<!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
@@ -510,7 +510,6 @@ function loadGlbFile(paths, callback) {
   tryLoad();
 }
 function loadExternalAssets(){
-  // Búsqueda automática en la raíz del repositorio GitHub
   loadGlbFile(['./GUN.glb', './gun.glb', 'GUN.glb', 'gun.glb'], model => {
     loadedGunModel = model;
     loadedGunModel.traverse(c => { if(c.isMesh){ c.frustumCulled = false; c.castShadow = true; if(c.material) c.material.side = THREE.DoubleSide; } });
@@ -663,7 +662,7 @@ function upd(dt){
    snd(60,.4,'sawtooth',.15);scene.remove(g.m);G.splice(i,1)}}
  if(T-P.hurtT>4)P.hp=Math.min(100,P.hp+dt*20);dmg=Math.max(0,dmg-dt*1.5);$('dm').style.opacity=dmg;
  const nb=nearBox();
- $('pr').textContent=nb ? `[BOX] ${nb.t}` : '';
+ $('pr').textContent=nb ? \`[BOX] \${nb.t}\` : '';
  $('hpf').style.width=P.hp+'%';$('am').textContent=P.ammo[P.gun]+' / '+P.res[P.gun];$('wn').textContent=g.n+(P.rel>0?' · RECARGANDO':'');
  $('rn').textContent='RONDA '+rn;$('pt').textContent='BAJAS '+P.kills;
  $('dbg').textContent='FPS '+(1/dt|0)+' · x'+P.pos.x.toFixed(1)+' z'+P.pos.z.toFixed(1)+' · enemigos '+Z.length}
@@ -675,7 +674,7 @@ function buildTC(){const tc=$('tc');
   b.onpointerup=b.onpointercancel=()=>{if(b.classList.contains('p')){b.classList.remove('p');A[ac](0)}};tc.appendChild(b)});
  const js=$('js'),kn=$('kn');let jid=null;
  const mv=e=>{const r=js.getBoundingClientRect(),q=r.width/2;let dx=(e.clientX-r.left-q)/q,dy=(e.clientY-r.top-q)/q;const l=Math.hypot(dx,dy);if(l>1){dx/=l;dy/=l}
-  kn.style.transform=`translate(${dx*q*.5}px,${dy*q*.5}px)`;if(Math.min(l,1)<.12){J.x=J.y=0}else{J.x=dx;J.y=dy}};
+  kn.style.transform=\`translate(\${dx*q*.5}px,\${dy*q*.5}px)\`;if(Math.min(l,1)<.12){J.x=J.y=0}else{J.x=dx;J.y=dy}};
  js.onpointerdown=e=>{js.setPointerCapture(e.pointerId);jid=e.pointerId;mv(e)};
  js.onpointermove=e=>{if(e.pointerId===jid)mv(e)};
  js.onpointerup=js.onpointercancel=()=>{jid=null;J.x=J.y=0;kn.style.transform=''};
@@ -696,24 +695,27 @@ let last=performance.now();
     const container = document.getElementById('gameContainer');
     const frame = document.getElementById('gameFrame');
     
-    // Genera el entorno seguro en sandbox cargando el juego directamente en memoria
-    const blob = new Blob([_gameHtmlCode], { type: 'text/html;charset=utf-8' });
-    frame.src = URL.createObjectURL(blob);
+    // Carga directa mediante srcdoc (compatible con móviles y sin bloqueos de Blob)
+    frame.srcdoc = _gameHtmlCode;
     container.style.display = 'block';
     
     if (document.documentElement.requestFullscreen) {
       document.documentElement.requestFullscreen().catch(() => {});
+    } else if (document.documentElement.webkitRequestFullscreen) {
+      document.documentElement.webkitRequestFullscreen();
     }
   }
 
   function closeGame() {
     const container = document.getElementById('gameContainer');
     const frame = document.getElementById('gameFrame');
-    frame.src = 'about:blank';
+    frame.srcdoc = '';
     container.style.display = 'none';
     
     if (document.fullscreenElement) {
       document.exitFullscreen().catch(() => {});
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
     }
   }
 </script>
