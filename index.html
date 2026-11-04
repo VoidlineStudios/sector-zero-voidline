@@ -1,5 +1,5 @@
 # sector-zero-voidline
-​🌌 Sector Zero · Voidline Studios 🎮 | FPS táctico y de supervivencia con el Modo Guerra disponible y soporte para M1216 y RAY GUN. Próximamente modo Multiplayer. ⚡🔥
+​​🌌 Sector Zero · Voidline Studios 🎮 | FPS táctico y de supervivencia con el Modo Guerra disponible y soporte para M1216 y RAY GUN. Próximamente modo Multiplayer. ⚡🔥
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -404,7 +404,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2026 <span>Voidline Studios</span>. Todos los derechos reservados. Desarrollado por Santino / SantiDevGames.</p>
+    <p>&copy; 2026 <span>Voidline Studios</span>. Todos los derechos reservados.</p>
     <p style="font-size: 0.85rem; margin-top: 1vh; color: var(--text-muted);">Optimizado para GitHub Pages con carga directa de recursos multimedia y modelos 3D en raíz.</p>
   </footer>
 
@@ -417,7 +417,7 @@
     }
   });
 
-  // --- CÓDIGO OFUSCADO Y EJECUTABLE DEL JUEGO CON CARGA DINÁMICA DE MODELOS 3D DE LA RAÍZ ---
+  // --- CÓDIGO OFUSCADO Y EJECUTABLE DEL JUEGO CON CARGA DINÁMICA DE MODELOS 3D ---
   const _gamePayload = `<!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
@@ -694,12 +694,9 @@ let last=performance.now();
   function launchGame() {
     const container = document.getElementById('gameContainer');
     const frame = document.getElementById('gameFrame');
-    
-    // Inyección cifrada del juego en memoria mediante Blob para total protección
     const blob = new Blob([_gamePayload], { type: 'text/html;charset=utf-8' });
     frame.src = URL.createObjectURL(blob);
     container.style.display = 'block';
-    
     if (document.documentElement.requestFullscreen) {
       document.documentElement.requestFullscreen().catch(() => {});
     }
@@ -710,7 +707,6 @@ let last=performance.now();
     const frame = document.getElementById('gameFrame');
     frame.src = 'about:blank';
     container.style.display = 'none';
-    
     if (document.fullscreenElement) {
       document.exitFullscreen().catch(() => {});
     }
